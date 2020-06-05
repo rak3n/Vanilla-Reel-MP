@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/player.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+<body> 
+  <div id="page" class="loading"style="overflow-x:hidden;">   
+    <header class="text-gray-700 body-font" style=" height:120px;top:0;background-color:white;width:100vw;">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div id="home"><a style="cursor:pointer" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-xl">Reel-MP</span>
+        </a></div>
+      </div>
+    </header>
+    <section class="text-gray-700 body-font">
+        <div class="container px-5 py-15 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Welcome to the Fun</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Play the song in your mind in a GO</p>
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0">
+            <input id='search' class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-green-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Play this music . . . ." type="text">
+            <button id='go' class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Go</button>
+          </div>
+
+           <div id="queue">
+          </div>
+
+        </div>
+      </section>
+      
+      <footer style="background-color:black;" class="text-gray-100 body-font oslo">
+          <div class="musicplayer">
+            <div id ="musicHead1">
+              <marquee id="musicHead">
+                Queue is empty, Select a Music first
+              </marquee>
+            </div>
+            <div class="title" id="process"></div>
+            <div>
+            <button id="p/p" style="width:100px;background-color:#48bb78;color:azure;border-radius:80px;margin-right: 2vw;outline: none;">Pause</button>
+            <button id="skip" style="width:100px;background-color:#48bb78;color:azure;border-radius:80px;outline: none;">Skip</button>
+            </div>
+          </div>
+          <input id="range" class="slider" type="range" min="1" max="105" value="100" oninput="changeVol(this.value)">         
+      </footer>
+      <div id="player">
+      </div>
+    </div>
+   <div class="onLoad" id="load">
+    <div id="home"><a style="cursor:pointer" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl">Reel-MP</span>
+    </div><br></br><br>
+     <div class="loader"></div>
+   </div>
+  </body>
+</html>
+<script>
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+
+
+<script src="src/query.js"></script>
