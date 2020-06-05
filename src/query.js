@@ -1,4 +1,4 @@
-console.log=()=>{}
+//console.log=()=>{}
 var queue=[]
 var select=false
 var flag=''
@@ -10,7 +10,8 @@ function onYouTubeIframeAPIReady() {
     height: '0',
     width: '0',
     videoId: 'ALZHF5UqnU4',
-     events: {
+    loop:'0',
+    events: {
        'onReady': onPlayerReady,
        'onStateChange': onPlayerStateChange,
      }
@@ -19,7 +20,10 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerStateChange(data){
     data=data.data
-    if(data==1){
+    if(data==-1 && flag=='Finished'){
+        flag='Finished'
+    }
+    else if(data==1){
         flag='Playing'
     }
     else if(data==2){
@@ -28,13 +32,22 @@ function onPlayerStateChange(data){
     else if(data==3){
         flag='Loading'
     }
+    else if(data==0 || data==5){
+        //player.stopVideo()
+        flag='Finished'
+    }
     else flag='Error'
+    //console.log(data)
 
     document.getElementById("process").innerHTML=flag
-    if(data==0 && queue.length!=0){
-        player.loadVideoById(queue[0][0])
-        document.getElementById("musicHead").innerHTML=String(queue[0][1])
+    if(data==0 && queue.length>1){
+        player.loadVideoById(queue[1][0])
+        document.getElementById("musicHead").innerHTML=String(queue[1][1])
         queue.shift()
+    }
+    if(data==0 && queue.length==1){
+        document.getElementById('p/p').innerHTML="Play"
+        play=!play
     }
 }
 
@@ -67,35 +80,43 @@ function getID(obj){
     if(queue.length>0){
         queue.shift()
     }
-    try{
-        if(! queue[0].includes(vId)){
-            queue.push([vId,title])
+    var inside=false
+    for(var i=0;i<queue.length;i++){
+        if(queue[i].includes(vId)){
+            inside=true   
         }
+        else{
+            break;
+        }    
     }
-    catch(error){
+
+    if(inside){
+        Notify('Already in Queue')
+    }
+    else{
         queue.push([vId,title])
+        Notify('Playing Now')
     }
 }
 
 function addQueue(obj){
     var Vid=obj.getAttribute('data')
     var title=obj.getAttribute('title')
-    try {
-        if(queue[0].includes(Vid)){
+    var inside=false
+    for(var i=0;i<queue.length;i++){
+            if(queue[i].includes(Vid)){
+                inside=true
+                break   
+            }  
+        }
+
+        if(inside){
             Notify('Already in Queue')
         }
         else{
             queue.push([Vid,title])
             Notify('Added to Queue')
         }
-    } catch (error) {
-        select=true
-        queue.push([Vid,title])
-        //Notify('Queue is Empty, Playing the Selection ... ')
-        player.loadVideoById(Vid)
-        document.getElementById("musicHead").innerHTML=String(title)
-        
-    }
 }
 
 //code for player control
@@ -103,6 +124,9 @@ function addQueue(obj){
 function toggle(){
     play=!play
     if (play){
+        // if (queue.length==1){
+        //     player.
+        // }
         player.playVideo()
         return 'Pause'
     }
@@ -124,12 +148,11 @@ function listner(){
         }
     })
     skip.addEventListener('click',()=>{
-        if (queue.length > 1){
+        if (queue.length > 0){
             player.clearVideo()
             queue.shift()
             player.loadVideoById(queue[0][0])
             document.getElementById("musicHead").innerHTML=String(queue[0][1])
-            console.log(queue[0][1])
             }
         else{
             Notify('Your Queue is empty')
@@ -140,7 +163,7 @@ function listner(){
 //code for handling search query
 function str(imgUrl,title,ID){
     var button=String('<div style="margin-left:auto;"><button id="select" style="width:100px;background-color:#48bb78;color:azure;border-radius:80px;margin-right: 2vw;outline: none;" onclick="getID(this);" data="'+ ID +'" title="'+title+'">Play</button><button id="qit" style="width:100px;background-color:#48bb78;color:azure;border-radius:80px;outline: none;" onclick="addQueue(this);" data="'+ ID +'" title="'+title+'">Queue</button></div>')
-    return String('<div style="margin-top:10px;margin-left:0px"><div class="cardArea h-full bg-gray-200 p-8 flex flex-wrap rounded"><img width=70 height=70 src='+imgUrl+'>'+'<div class="cardTitle"">'+title+'</div>' +button+'</div></div>')
+    return String('<div style="margin-top:10px;margin-left:0px"><div class="cardArea h-full bg-gray-200 p-8 rounded"><img width=70 height=70 src='+imgUrl+'>'+'<div class="cardTitle"">'+title+'</div>' +button+'</div></div>')
 }
 function str2(s){
     return String('<div style="margin-top:10px;margin-left:0px"><div ><div style="justify-content:center" class="h-full bg-gray-200 p-8 flex flex-wrap rounded">'+s+'</div></div></div>')
