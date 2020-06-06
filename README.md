@@ -16,7 +16,7 @@ This application has 3 main components which makes the music to stream :
   This one uses Youtube IFrame API to create a youtube player to play query on the go with not every but all necessary controls.
   
 3. <b>API</b>
-  This is the last important component of the entire program which generates thirty results out of which list generator only     uses Ten results (..... I think beacuse this much is enogh :} )
+  This is the last important component of the entire program which generates thirty results out of which list generator only     uses Ten results (.....Beacuse I think this much is enogh :} )
   
 
 # Contribution
