@@ -1,6 +1,11 @@
 # Vanilla-Reel-MP
 This is an open source music player to stream your favourite Music on the web
 This project is inspired by Discord music bot to bring add free experience to the user.
+<br/>
+
+
+![alt text](https://github.com/rak3n/Vanilla-Reel-MP/blob/master/assets/Screenshot%20from%202020-06-06%2019.52.55.png)
+
 
 <b>Components</b>
 This application has 3 main components which makes the music to stream :
