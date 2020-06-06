@@ -2,7 +2,8 @@ var queue=[]
 var select=false
 var flag=''
 var play=true
-var apiURL=process.env.apiURL
+var apiURL="https://youtube-search-results-api.herokuapp.com/youtube/"
+
 //Set the youtube player !!
 var player;
 function onYouTubeIframeAPIReady() {
