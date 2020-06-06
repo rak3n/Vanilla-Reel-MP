@@ -1,4 +1,3 @@
-//console.log=()=>{}
 var queue=[]
 var select=false
 var flag=''
@@ -124,9 +123,6 @@ function addQueue(obj){
 function toggle(){
     play=!play
     if (play){
-        // if (queue.length==1){
-        //     player.
-        // }
         player.playVideo()
         return 'Pause'
     }
@@ -157,12 +153,12 @@ function listner(){
         else{
             Notify('Your Queue is empty')
         }
-        console.log(queue)
+        //console.log(queue)
     })
 }
 //code for handling search query
 function str(imgUrl,title,ID){
-    var button=String('<div style="margin-left:auto;"><button id="select" style="width:100px;background-color:#48bb78;color:azure;border-radius:80px;margin-right: 2vw;outline: none;" onclick="getID(this);" data="'+ ID +'" title="'+title+'">Play</button><button id="qit" style="width:100px;background-color:#48bb78;color:azure;border-radius:80px;outline: none;" onclick="addQueue(this);" data="'+ ID +'" title="'+title+'">Queue</button></div>')
+    var button=String('<div class="queueBtn" style="margin-left:auto;"><button id="select" style="width:100px;height:27px;background-color:#48bb78;color:azure;border-radius:80px;margin-right: 2vw;outline: none;" onclick="getID(this);" data="'+ ID +'" title="'+title+'">Play</button><button id="qit" style="width:100px;height:27px;background-color:#48bb78;color:azure;border-radius:80px;outline: none;" onclick="addQueue(this);" data="'+ ID +'" title="'+title+'">Queue</button></div>')
     return String('<div style="margin-top:10px;margin-left:0px"><div class="cardArea h-full bg-gray-200 p-8 rounded"><img width=70 height=70 src='+imgUrl+'>'+'<div class="cardTitle"">'+title+'</div>' +button+'</div></div>')
 }
 function str2(s){
@@ -177,16 +173,16 @@ function populate(videos){
      })
     document.getElementById('queue').innerHTML=Queue
 }
-
+//apiURL is environment variable DONT TOUCH IT
 async function request(searchQuery){
-     let url = 'https://youtube-search-results-api.herokuapp.com/youtube/' + searchQuery
+     let url = apiURL + searchQuery
      fetch(url,{method:'GET'})
      .then(res=>res.json())
      .then(res=>{
-         console.log(res)
+         //console.log(res)
          if (res.length>0){
          data=res.splice(0,10)
-         console.log(data)
+         //console.log(data)
          populate(data)
          }
          else{
@@ -210,7 +206,7 @@ function Go(){
 }
 
 function back(){
-  console.log('here')
+  //console.log('here')
   document.getElementById('queue').innerHtml=''
 }
 
@@ -228,9 +224,6 @@ function init(){
         }
     
     })
-
-    document.getElementById('home')
-    .addEventListener('click',()=>console.log('back'))
 }
 
 function prepare(){
@@ -243,5 +236,5 @@ document.addEventListener('DOMContentLoaded',prepare)
 function changeVol(val){
   //var val=document.getElementById('range')
   player.setVolume(val)
-  console.log(val)
+  //console.log(val)
 }
