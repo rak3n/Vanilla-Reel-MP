@@ -1,4 +1,6 @@
 # Vanilla-Reel-MP
+Before reading this I hope you have visited the site before to get some gist because I really struggle to write Docs ... 
+
 This is an open source music player to stream your favourite Music on the web
 This project is inspired by Discord music bot to bring add free experience to the user.
 <br/>
