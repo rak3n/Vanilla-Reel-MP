@@ -2,6 +2,7 @@ var queue=[]
 var select=false
 var flag=''
 var play=true
+var apiURL=process.env.apiURL
 //Set the youtube player !!
 var player;
 function onYouTubeIframeAPIReady() {
@@ -173,7 +174,7 @@ function populate(videos){
      })
     document.getElementById('queue').innerHTML=Queue
 }
-//apiURL is environment variable DONT TOUCH IT
+
 async function request(searchQuery){
      let url = apiURL + searchQuery
      fetch(url,{method:'GET'})
