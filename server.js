@@ -16,4 +16,3 @@ app.get('/search/:query',async (req,res)=>{
 })
 
 app.listen(8000)
-console.log("localhost:8000")
