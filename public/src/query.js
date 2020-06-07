@@ -29,7 +29,7 @@ function onPlayerStateChange(data){
     else if(data==1){
         flag='Playing'
         player.setVolume(Volume)
-        console.log(player.getVolume())
+        //console.log(player.getVolume())
     }
     else if(data==2){
         flag='Paused'
@@ -244,5 +244,5 @@ function changeVol(val){
   //var val=document.getElementById('range')
   player.setVolume(val)
   Volume=val
-  console.log(val)
+  //console.log(val)
 }
