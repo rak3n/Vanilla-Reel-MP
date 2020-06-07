@@ -3,6 +3,7 @@ var select=false
 var flag=''
 var play=true
 var apiURL="/search/"
+var Volume=100
 
 //Set the youtube player !!
 var player;
@@ -11,6 +12,7 @@ function onYouTubeIframeAPIReady() {
     height: '0',
     width: '0',
     videoId: 'ALZHF5UqnU4',
+    enablejsapi:'1',
     loop:'0',
     events: {
        'onReady': onPlayerReady,
@@ -26,6 +28,8 @@ function onPlayerStateChange(data){
     }
     else if(data==1){
         flag='Playing'
+        player.setVolume(Volume)
+        console.log(player.getVolume())
     }
     else if(data==2){
         flag='Paused'
@@ -45,6 +49,7 @@ function onPlayerStateChange(data){
         player.loadVideoById(queue[1][0])
         document.getElementById("musicHead").innerHTML=String(queue[1][1])
         queue.shift()
+        player.playVideo()
     }
     if(data==0 && queue.length==1){
         document.getElementById('p/p').innerHTML="Play"
@@ -111,13 +116,13 @@ function addQueue(obj){
             }  
         }
 
-        if(inside){
-            Notify('Already in Queue')
-        }
-        else{
-            queue.push([Vid,title])
-            Notify('Added to Queue')
-        }
+    if(inside){
+        Notify('Already in Queue')
+    }
+    else{
+        queue.push([Vid,title])
+        Notify('Added to Queue')
+    }
 }
 
 //code for player control
@@ -238,5 +243,6 @@ document.addEventListener('DOMContentLoaded',prepare)
 function changeVol(val){
   //var val=document.getElementById('range')
   player.setVolume(val)
-  //console.log(val)
+  Volume=val
+  console.log(val)
 }
