@@ -2,7 +2,7 @@ var queue=[]
 var select=false
 var flag=''
 var play=true
-var apiURL="https://youtube-search-results-api.herokuapp.com/youtube/"
+var apiURL="/search/"
 
 //Set the youtube player !!
 var player;
@@ -41,7 +41,7 @@ function onPlayerStateChange(data){
     //console.log(data)
 
     document.getElementById("process").innerHTML=flag
-    if(data==0 && queue.length>1){
+    if(data==0 && queue.length>=1){
         player.loadVideoById(queue[1][0])
         document.getElementById("musicHead").innerHTML=String(queue[1][1])
         queue.shift()
