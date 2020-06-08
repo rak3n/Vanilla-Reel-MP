@@ -19,7 +19,4 @@ This application has 3 main components which makes the music to stream :
   
 3. <b>API</b>
   This is the last important component of the entire program which generates thirty results out of which list generator only     uses Ten results (.....Beacuse I think this much is enogh :} )
-  
-
-# Contribution
-Do you think this app is amazing and you can add a new feature then, then why wait share your idea by raising a issue and get on work to make this app more amazing to use (and Yes I mean all sort of update . . . )
+ 
