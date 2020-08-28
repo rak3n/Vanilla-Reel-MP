@@ -1,8 +1,7 @@
 # Vanilla-Reel-MP
-Before reading this I hope you have visited the site before to get some gist because I really struggle to write Docs ... 
 
 This is an open source music player to stream your favourite Music on the web
-This project is inspired by Discord music bot to bring add free experience to the user.
+This project is inspired by Discord music bot to bring Ads free experience to the user.
 <br/>
 
 
@@ -28,12 +27,13 @@ This application has 3 main components which makes the music to stream :
 If you are still here let me take you to a little bit more details about application structure.
 
 * <b>Frontend</b>: 
-So entire application has 3 basic divisions header, music management and player div in repesctive order. Entire app has a responsive design (all thanks too tailwind and some extra CSS). Music management consist of a search box which accepts input from the user as combination of alphanumeric inputs, with a 'Go' button, which initiates to make a call to an 'url' embedded by node.js server which transfers the user query request to next api url, which is managed by a custom server hosted over herokuapp to sent back 30 results as music info in the JSON format with following structure:
+So entire application has 3 basic divisions, header, music management and player div in repesctive order. Entire app has a responsive design (all thanks too tailwind and some extra CSS). Music management consist of a search box which accepts input from the user as combination of alphanumeric inputs, with a 'Go' button, which initiates to make a call to an 'url' embedded by node.js server which transfers the user query request to an api url, which is managed by a custom server hosted over herokuapp to sent back 19 results, as music info in the JSON format with following structure:
 
 <code>{'videoId':VID, 'title':title, 'descpription':DESC}</code>
 
-The results are all in form of an array.
-After Fetching all the data. Entire Player operations are performed in one page only (that's why choose Single Page Architecture). 
+<b>The results are all in form of an array.</b>
+
+After Fetching all the data. Entire Player operations are performed in one page only (that's why choose <b>Single Page Architecture</b>). 
 Playing Operation are done over YouTube Iframe Player by making request to YouTube Iframe Player API via javascript code. For more information about this you can follow this link https://developers.google.com/youtube/iframe_api_reference
 
 
