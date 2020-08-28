@@ -42,7 +42,6 @@ Remember that I this project request about getting JSON information about query 
 server.js script of Reel-MP is handling fetch request from within the app and send it to the custom api server, For this operation to get information about quearies, I could have used YouTube V3 data api,<b> but this project doesn't uses that !!! </b>, all because of the factual problem of limit of 100 queries request to the Google servers. That why I had to develop an other approach to fulfill unlimited query request by the user in a session.
 These results are sent back as respond to the node.js script and then back to standard fetch call to javascript script.
 
-<b>For extra details about tat custom API server for that query request handling mechanism </b>
 
 
 Thank you for spending your time reading this doc.
